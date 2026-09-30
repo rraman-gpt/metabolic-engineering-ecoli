@@ -1,9 +1,8 @@
-# In-Silico Metabolic Engineering of *E. coli* for Naringenin Production
+An unclosed code block tag (```) near the pathway diagram ate the lower half of your file and turned everything below it into one endless, unformatted line.   Replace your entire readme.md in VS Code with this clean code block. Every section is strictly closed, "I" is used throughout, and the table equations fit on normal screen widths without any horizontal scroll.   Markdown# In-Silico Metabolic Engineering of *E. coli* for Naringenin Production
 
 ![Python](https://img.shields.io/badge/Python-3.9%2B-blue?logo=python)
 ![CobraPy](https://img.shields.io/badge/Library-CobraPy-green)
 ![Model](https://img.shields.io/badge/Base_Model-iJO1366-orange)
-![License](https://img.shields.io/badge/License-MIT-lightgrey)
 
 Constraint-based metabolic modeling and yield optimization for the heterologous production of the plant flavonoid **Naringenin** in *Escherichia coli* using **Genome-Scale Metabolic Models (GSMMs)** and **Flux Balance Analysis (FBA)**.
 
@@ -41,7 +40,7 @@ Naringenin synthesis is engineered by extending the endogenous *E. coli* aromati
               ✨ NARINGENIN ✨
                    │
             (Demand / Export)
-📋 Reaction SpecificationsReaction IDNameEquationTALTyrosine Ammonia-Lyasetyr_L → p_coumarate + nh44CL4-Coumarate-CoA Ligasep_coumarate + atp + coa →coumaroyl_coa + amp + ppiCHSChalcone Synthasecoumaroyl_coa + 3 malcoa →naringenin_chalcone + 4 coa + 3 co2CHIChalcone Isomerasenaringenin_chalcone → naringeninDM_naringeninDemand Reactionnaringenin → ∅🧮 Mathematical Formulation & FBA StrategyFlux Balance Analysis assumes a quasi-steady state ($S \cdot v = 0$) where $S$ is the $m \times n$ stoichiometric matrix and $v$ is the vector of metabolic fluxes:$$\max_{v} \quad z = c^T v$$$$\text{subject to} \quad S \cdot v = 0$$$$lb_i \le v_i \le ub_i \quad \forall i \in \{1, \dots, n\}$$Objective Functions Evaluated:Wild-Type / Baseline Growth: Objective vector $c$ maximizes the biological biomass reaction (BIOMASS_iJO1366_WT_53RT).Maximal Production Potential: Objective vector $c$ maximizes the demand reaction DM_naringenin.Growth Coupling Evaluation: Scanning boundary conditions across biomass production levels to plot Production Envelope graphs.📁 Repository StructurePlaintextmetabolic-engineering-ecoli/
+📋 Reaction SpecificationsReaction IDNameEquationTALTyrosine Ammonia-Lyasetyr_L → p_coumarate + nh44CL4-Coumarate-CoA Ligasep_coumarate + atp + coa → coumaroyl_coa + amp + ppiCHSChalcone Synthasecoumaroyl_coa + 3 malcoa → naringenin_chalcone + 4 coa + 3 co2CHIChalcone Isomerasenaringenin_chalcone → naringeninDM_naringeninDemand Reactionnaringenin → ∅🧮 Mathematical Formulation & FBA StrategyFlux Balance Analysis assumes a quasi-steady state ($S \cdot v = 0$) where $S$ is the $m \times n$ stoichiometric matrix and $v$ is the vector of metabolic fluxes:$$\max_{v} \quad z = c^T v$$$$\text{subject to} \quad S \cdot v = 0$$$$lb_i \le v_i \le ub_i \quad \forall i \in \{1, \dots, n\}$$Objective Functions Evaluated:Wild-Type / Baseline Growth: Objective vector $c$ maximizes the biological biomass reaction (BIOMASS_iJO1366_WT_53RT).Maximal Production Potential: Objective vector $c$ maximizes the demand reaction DM_naringenin.Growth Coupling Evaluation: Scanning boundary conditions across biomass production levels to plot Production Envelope graphs.📁 Repository StructurePlaintextmetabolic-engineering-ecoli/
 ├── data/
 │   └── iJO1366_naringenin.json       # Modified GSMM containing heterologous reactions
 ├── notebooks/
