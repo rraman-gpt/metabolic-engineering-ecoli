@@ -113,47 +113,34 @@ metabolic-engineering-ecoli/
 
 ## 💻 How to Run
 
-### 1. Clone the Repository
+Follow these steps to set up the environment and execute the simulation pipeline locally:
+
+### Step 1: Clone the Repository
 ```bash
-git clone https://github.com/rraman-gpt/metabolic-engineering-ecoli.git
+git clone [https://github.com/rraman-gpt/metabolic-engineering-ecoli.git](https://github.com/rraman-gpt/metabolic-engineering-ecoli.git)
 cd metabolic-engineering-ecoli
-2. Create and Activate a Virtual Environment
+Step 2: Set Up Virtual Environment
+On Windows (PowerShell):
+
 PowerShell
-# On Windows PowerShell
 python -m venv venv
 .\venv\Scripts\activate
+On macOS / Linux:
 
-# On macOS/Linux
+Bash
 python3 -m venv venv
 source venv/bin/activate
-3. Install Dependencies
+Step 3: Install Dependencies
 Bash
+pip install --upgrade pip
 pip install -r requirements.txt
-4. Launch Jupyter Notebooks
+Step 4: Launch & Execute Notebooks
 Bash
 jupyter notebook
-Navigate to notebooks/01_Model_Setup.ipynb to execute the pipeline sequentially.
+Open your browser, navigate to the notebooks/ folder, and run the pipeline sequentially:
 
-🛠️ Tech Stack
-Language: Python 3.9+
+01_Model_Setup.ipynb — SBML/JSON model assembly
 
-Modeling Framework: CobraPy
+02_Baseline_FBA.ipynb — Wild-type flux analysis
 
-Solver: GLPK (GNU Linear Programming Kit) / scipy.optimize
-
-Data Handling & Analytics: Pandas, NumPy
-
-Visualization: Matplotlib
-
-👤 Author
-Raman Gupta
-
-Dual Degree Candidate @ BITS Pilani (Pilani Campus)
-
-🎓 M.Sc. (Hons) Biological Sciences + B.E. Electrical & Electronics Engineering (EEE)
-
-Email: rramangpt@gmail.com
-
-LinkedIn: https://www.linkedin.com/in/raman-gupta-56b75138a/
-
-GitHub: https://github.com/rraman-gpt
+03_Gene_Knockout_Optimization.ipynb — Gene deletion screen
