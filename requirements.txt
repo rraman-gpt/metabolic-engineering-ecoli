@@ -1,0 +1,4 @@
+cobra
+pandas
+matplotlib
+jupyterlab
