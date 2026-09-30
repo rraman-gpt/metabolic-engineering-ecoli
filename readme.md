@@ -1,4 +1,4 @@
-I hear your frustration—it's super annoying when GitHub's markdown parser gets stuck!The root cause of that horizontal infinite box is backtick collision. When triple backticks (```) are nested inside chat outputs, an unclosed backtick tag gets pasted into your readme.md, turning every single line below it into one giant, unbroken raw text box.   To permanently prevent backtick conflicts, the updated code below replaces code blocks in the ASCII diagram and tree view with HTML <pre> tags.Clean, Fixed readme.mdSelect all, copy the block below, and overwrite your readme.md in VS Code:Markdown# In-Silico Metabolic Engineering of *E. coli* for Naringenin Production
+# In-Silico Metabolic Engineering of *E. coli* for Naringenin Production
 
 ![Python](https://img.shields.io/badge/Python-3.9%2B-blue?logo=python)
 ![CobraPy](https://img.shields.io/badge/Library-CobraPy-green)
@@ -12,7 +12,7 @@ Constraint-based metabolic modeling and yield optimization for the heterologous 
 
 Microbial production of complex plant secondary metabolites provides a sustainable alternative to chemical synthesis and agricultural extraction. However, natural chassis organisms like *E. coli* lack native pathways for flavonoid biosynthesis and naturally divert carbon flux toward biomass accumulation rather than secondary metabolites.
 
-In this project, I integrated a 4-step heterologous plant pathway into the genome-scale metabolic reconstruction of *E. coli* (`iJO1366`). Using **CobraPy**, I modeled pathway thermodynamics, identified endogenous precursor bottlenecks (L-Tyrosine and Malonyl-CoA), and simulated single-gene knockouts (Δpgi) to establish a growth-coupled production phenotype.
+In this project, I integrated a 4-step heterologous plant pathway into the genome-scale metabolic reconstruction of *E. coli* (`iJO1366`). Using **CobraPy**, I modeled pathway thermodynamics, identified endogenous precursor bottlenecks (L-Tyrosine and Malonyl-CoA), and simulated single-gene knockouts ($\Delta pgi$) to establish a growth-coupled production phenotype.
 
 ---
 
@@ -48,11 +48,11 @@ Naringenin synthesis is engineered by extending the endogenous *E. coli* aromati
 
 | Reaction ID | Name | Equation |
 | :--- | :--- | :--- |
-| **TAL** | Tyrosine Ammonia-Lyase | tyr_L → p_coumarate + nh4 |
-| **4CL** | 4-Coumarate-CoA Ligase | p_coumarate + atp + coa → coumaroyl_coa + amp + ppi |
-| **CHS** | Chalcone Synthase | coumaroyl_coa + 3 malcoa → naringenin_chalcone + 4 coa + 3 co2 |
-| **CHI** | Chalcone Isomerase | naringenin_chalcone → naringenin |
-| **DM_naringenin** | Demand Reaction | naringenin → ∅ |
+| **TAL** | Tyrosine Ammonia-Lyase | `tyr_L → p_coumarate + nh4` |
+| **4CL** | 4-Coumarate-CoA Ligase | `p_coumarate + atp + coa → coumaroyl_coa + amp + ppi` |
+| **CHS** | Chalcone Synthase | `coumaroyl_coa + 3 malcoa → naringenin_chalcone + 4 coa + 3 co2` |
+| **CHI** | Chalcone Isomerase | `naringenin_chalcone → naringenin` |
+| **DM_naringenin** | Demand Reaction | `naringenin → ∅` |
 
 ---
 
@@ -98,13 +98,13 @@ metabolic-engineering-ecoli/
 * Exports modified model to JSON/SBML format under `data/`.
 
 ### `02_Baseline_FBA.ipynb`
-* Performs baseline Flux Balance Analysis under aerobic glucose conditions (10 mmol/gDW/h).
+* Performs baseline Flux Balance Analysis under aerobic glucose conditions ($10\text{ mmol/gDW/h}$).
 * Evaluates theoretical maximum Naringenin yield vs. growth rate trade-offs.
 * Identifies precursor drain bottlenecks: **Malonyl-CoA** (fatty acid biosynthesis pathway competition) and **L-Tyrosine** (aromatic pathway flux).
 
 ### `03_Gene_Knockout_Optimization.ipynb`
 * Runs a systematic single-gene deletion screen across non-essential metabolic genes.
-* Identifies metabolic knockouts such as **Δpgi** (*Glucose-6-phosphate isomerase*):
+* Identifies metabolic knockouts such as **$\Delta pgi$** (*Glucose-6-phosphate isomerase*):
   * Redirects glucose flux into the **Pentose Phosphate Pathway (PPP)**.
   * Increases NADPH generation, supporting elevated precursor synthesis.
   * Forces growth-coupled production where cell growth requires flux through the engineered secondary metabolite pathway.
@@ -117,13 +117,43 @@ metabolic-engineering-ecoli/
 ```bash
 git clone https://github.com/rraman-gpt/metabolic-engineering-ecoli.git
 cd metabolic-engineering-ecoli
-2. Create and Activate a Virtual EnvironmentPowerShell# On Windows PowerShell
+2. Create and Activate a Virtual Environment
+PowerShell
+# On Windows PowerShell
 python -m venv venv
 .\venv\Scripts\activate
 
 # On macOS/Linux
 python3 -m venv venv
 source venv/bin/activate
-3. Install DependenciesBashpip install -r requirements.txt
-4. Launch Jupyter NotebooksBashjupyter notebook
-Navigate to notebooks/01_Model_Setup.ipynb to execute the pipeline sequentially.🛠️ Tech StackLanguage: Python 3.9+Modeling Framework: CobraPySolver: GLPK (GNU Linear Programming Kit) / scipy.optimizeData Handling & Analytics: Pandas, NumPyVisualization: Matplotlib👤 AuthorRaman GuptaDual Degree Candidate @ BITS Pilani (Pilani Campus)🎓 M.Sc. (Hons) Biological Sciences + B.E. Electrical & Electronics Engineering (EEE)Email: rramangpt@gmail.comLinkedIn: https://www.linkedin.com/in/raman-gupta-56b75138a/GitHub: https://github.com/rraman-gpt
+3. Install Dependencies
+Bash
+pip install -r requirements.txt
+4. Launch Jupyter Notebooks
+Bash
+jupyter notebook
+Navigate to notebooks/01_Model_Setup.ipynb to execute the pipeline sequentially.
+
+🛠️ Tech Stack
+Language: Python 3.9+
+
+Modeling Framework: CobraPy
+
+Solver: GLPK (GNU Linear Programming Kit) / scipy.optimize
+
+Data Handling & Analytics: Pandas, NumPy
+
+Visualization: Matplotlib
+
+👤 Author
+Raman Gupta
+
+Dual Degree Candidate @ BITS Pilani (Pilani Campus)
+
+🎓 M.Sc. (Hons) Biological Sciences + B.E. Electrical & Electronics Engineering (EEE)
+
+Email: rramangpt@gmail.com
+
+LinkedIn: https://www.linkedin.com/in/raman-gupta-56b75138a/
+
+GitHub: https://github.com/rraman-gpt
